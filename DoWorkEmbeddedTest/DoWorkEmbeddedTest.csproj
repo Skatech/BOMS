@@ -8,8 +8,8 @@
     <ProjectGuid>{6C971A2B-2F8D-463F-B2A1-042053B87A47}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackgroundOperationEmbedded</RootNamespace>
-    <AssemblyName>BackgroundOperationEmbedded</AssemblyName>
+    <RootNamespace>DoWorkEmbeddedTest</RootNamespace>
+    <AssemblyName>DoWorkEmbeddedTest</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -61,6 +61,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

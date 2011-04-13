@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDialogWF", "SimpleDialogWF\SimpleDialogWF.csproj", "{661EE646-24B2-4A20-885C-DAD8B2CE65E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundOperationEmbedded", "BackgroundOperationEmbedded\BackgroundOperationEmbedded.csproj", "{6C971A2B-2F8D-463F-B2A1-042053B87A47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoWorkEmbeddedTest", "DoWorkEmbeddedTest\DoWorkEmbeddedTest.csproj", "{6C971A2B-2F8D-463F-B2A1-042053B87A47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
