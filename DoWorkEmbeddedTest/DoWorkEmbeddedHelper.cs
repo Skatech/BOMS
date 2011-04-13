@@ -10,7 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 
 namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
-{  
+{
   /// <summary>
   /// Background operation management with controls embedded in main window
   /// </summary>
@@ -37,9 +37,8 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
         progressbar.Style = ProgressBarStyle.Blocks;
         worker.ProgressChanged += (ss, ee) =>
         {
-          progressbar.Value = ee.ProgressPercentage;          
-          string newtitle = ee.UserState as string;
-          statuslabel.Text = newtitle ?? statuslabel.Text;
+          progressbar.Value = ee.ProgressPercentage;
+          statuslabel.Text = (ee.UserState as string) ?? statuslabel.Text;
         };
       }
 

@@ -37,7 +37,7 @@
       this.menuItemFile_StartB = new System.Windows.Forms.ToolStripMenuItem();
       this.menuItemFile_Separator = new System.Windows.Forms.ToolStripSeparator();
       this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
-      this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+      this.statusStrip = new System.Windows.Forms.StatusStrip();
       this.statusStripLabelResult = new System.Windows.Forms.ToolStripStatusLabel();
       this.statusStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
       this.listView = new System.Windows.Forms.ListView();
@@ -59,7 +59,7 @@
       this.toolStripContainer.ContentPanel.SuspendLayout();
       this.toolStripContainer.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer.SuspendLayout();
-      this.statusStrip1.SuspendLayout();
+      this.statusStrip.SuspendLayout();
       this.menuStrip.SuspendLayout();
       this.toolStrip.SuspendLayout();
       this.SuspendLayout();
@@ -124,7 +124,7 @@
       // 
       // toolStripContainer.BottomToolStripPanel
       // 
-      this.toolStripContainer.BottomToolStripPanel.Controls.Add(this.statusStrip1);
+      this.toolStripContainer.BottomToolStripPanel.Controls.Add(this.statusStrip);
       // 
       // toolStripContainer.ContentPanel
       // 
@@ -143,31 +143,34 @@
       this.toolStripContainer.TopToolStripPanel.Controls.Add(this.menuStrip);
       this.toolStripContainer.TopToolStripPanel.Controls.Add(this.toolStrip);
       // 
-      // statusStrip1
+      // statusStrip
       // 
-      this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-      this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.statusStrip.Dock = System.Windows.Forms.DockStyle.None;
+      this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripLabelResult,
             this.statusStripProgressBar});
-      this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-      this.statusStrip1.Name = "statusStrip1";
-      this.statusStrip1.Size = new System.Drawing.Size(449, 22);
-      this.statusStrip1.TabIndex = 0;
+      this.statusStrip.Location = new System.Drawing.Point(0, 0);
+      this.statusStrip.Name = "statusStrip";
+      this.statusStrip.Size = new System.Drawing.Size(449, 22);
+      this.statusStrip.TabIndex = 0;
       // 
       // statusStripLabelResult
       // 
-      this.statusStripLabelResult.AutoSize = false;
-      this.statusStripLabelResult.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+      this.statusStripLabelResult.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
       this.statusStripLabelResult.Name = "statusStripLabelResult";
-      this.statusStripLabelResult.Size = new System.Drawing.Size(200, 17);
-      this.statusStripLabelResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.statusStripLabelResult.Size = new System.Drawing.Size(332, 19);
+      this.statusStripLabelResult.Spring = true;
+      this.statusStripLabelResult.Text = "Operation status";
+      this.statusStripLabelResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.statusStripLabelResult.Visible = false;
       // 
       // statusStripProgressBar
       // 
+      this.statusStripProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
       this.statusStripProgressBar.AutoSize = false;
       this.statusStripProgressBar.MarqueeAnimationSpeed = 1;
       this.statusStripProgressBar.Name = "statusStripProgressBar";
-      this.statusStripProgressBar.Size = new System.Drawing.Size(100, 16);
+      this.statusStripProgressBar.Size = new System.Drawing.Size(100, 18);
       this.statusStripProgressBar.Visible = false;
       // 
       // listView
@@ -239,8 +242,8 @@
       // 
       this.toolStripProgressLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
       this.toolStripProgressLabel.Name = "toolStripProgressLabel";
-      this.toolStripProgressLabel.Size = new System.Drawing.Size(23, 22);
-      this.toolStripProgressLabel.Text = "<>";
+      this.toolStripProgressLabel.Size = new System.Drawing.Size(94, 22);
+      this.toolStripProgressLabel.Text = "Operation status";
       this.toolStripProgressLabel.Visible = false;
       // 
       // toolStripButtonCancel
@@ -281,8 +284,8 @@
       this.toolStripContainer.TopToolStripPanel.PerformLayout();
       this.toolStripContainer.ResumeLayout(false);
       this.toolStripContainer.PerformLayout();
-      this.statusStrip1.ResumeLayout(false);
-      this.statusStrip1.PerformLayout();
+      this.statusStrip.ResumeLayout(false);
+      this.statusStrip.PerformLayout();
       this.menuStrip.ResumeLayout(false);
       this.menuStrip.PerformLayout();
       this.toolStrip.ResumeLayout(false);
@@ -294,7 +297,7 @@
     #endregion
 
     private System.Windows.Forms.ToolStripContainer toolStripContainer;
-    private System.Windows.Forms.StatusStrip statusStrip1;
+    private System.Windows.Forms.StatusStrip statusStrip;
     private System.Windows.Forms.MenuStrip menuStrip;
     private System.Windows.Forms.ToolStrip toolStrip;
     private System.Windows.Forms.ToolStripStatusLabel statusStripLabelResult;
