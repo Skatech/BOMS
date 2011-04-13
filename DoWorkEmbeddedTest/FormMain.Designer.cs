@@ -34,27 +34,33 @@
       System.Windows.Forms.ToolStripButton toolStripButtonFile_StartB;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
       System.Windows.Forms.ColumnHeader columnHeaderOperationResult;
+      System.Windows.Forms.ToolStripMenuItem menuItemOptions;
+      System.Windows.Forms.ToolStripSeparator menuItemOptions_Separator;
+      System.Windows.Forms.ToolStripButton toolStripButtonFile_StartA;
       this.menuItemFile_StartB = new System.Windows.Forms.ToolStripMenuItem();
       this.menuItemFile_Separator = new System.Windows.Forms.ToolStripSeparator();
+      this.menuItemOptions_AbortableA = new System.Windows.Forms.ToolStripMenuItem();
+      this.menuItemOptions_NotifableA = new System.Windows.Forms.ToolStripMenuItem();
+      this.menuItemOptions_AbortableB = new System.Windows.Forms.ToolStripMenuItem();
+      this.menuItemOptions_NotifableB = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
       this.statusStrip = new System.Windows.Forms.StatusStrip();
-      this.statusStripLabelResult = new System.Windows.Forms.ToolStripStatusLabel();
+      this.statusStripLabelProgress = new System.Windows.Forms.ToolStripStatusLabel();
       this.statusStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
       this.listView = new System.Windows.Forms.ListView();
       this.columnHeaderOperationStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.menuStrip = new System.Windows.Forms.MenuStrip();
       this.toolStrip = new System.Windows.Forms.ToolStrip();
-      this.toolStripButtonFile_StartA = new System.Windows.Forms.ToolStripButton();
       this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-      this.toolStripProgressLabel = new System.Windows.Forms.ToolStripLabel();
-      this.toolStripButtonCancel = new System.Windows.Forms.ToolStripButton();
-      this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-      this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripLabelProgress = new System.Windows.Forms.ToolStripLabel();
       menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
       menuItemFile_StartA = new System.Windows.Forms.ToolStripMenuItem();
       menuItemFile_Exit = new System.Windows.Forms.ToolStripMenuItem();
       toolStripButtonFile_StartB = new System.Windows.Forms.ToolStripButton();
       columnHeaderOperationResult = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      menuItemOptions = new System.Windows.Forms.ToolStripMenuItem();
+      menuItemOptions_Separator = new System.Windows.Forms.ToolStripSeparator();
+      toolStripButtonFile_StartA = new System.Windows.Forms.ToolStripButton();
       this.toolStripContainer.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer.ContentPanel.SuspendLayout();
       this.toolStripContainer.TopToolStripPanel.SuspendLayout();
@@ -119,6 +125,57 @@
       columnHeaderOperationResult.Text = "Operation result";
       columnHeaderOperationResult.Width = 300;
       // 
+      // menuItemOptions
+      // 
+      menuItemOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemOptions_AbortableA,
+            this.menuItemOptions_NotifableA,
+            menuItemOptions_Separator,
+            this.menuItemOptions_AbortableB,
+            this.menuItemOptions_NotifableB});
+      menuItemOptions.Name = "menuItemOptions";
+      menuItemOptions.Size = new System.Drawing.Size(61, 20);
+      menuItemOptions.Text = "&Options";
+      // 
+      // menuItemOptions_AbortableA
+      // 
+      this.menuItemOptions_AbortableA.Checked = true;
+      this.menuItemOptions_AbortableA.CheckOnClick = true;
+      this.menuItemOptions_AbortableA.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.menuItemOptions_AbortableA.Name = "menuItemOptions_AbortableA";
+      this.menuItemOptions_AbortableA.Size = new System.Drawing.Size(290, 22);
+      this.menuItemOptions_AbortableA.Text = "Background operation abortable (case A)";
+      // 
+      // menuItemOptions_NotifableA
+      // 
+      this.menuItemOptions_NotifableA.Checked = true;
+      this.menuItemOptions_NotifableA.CheckOnClick = true;
+      this.menuItemOptions_NotifableA.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.menuItemOptions_NotifableA.Name = "menuItemOptions_NotifableA";
+      this.menuItemOptions_NotifableA.Size = new System.Drawing.Size(290, 22);
+      this.menuItemOptions_NotifableA.Text = "Background operation notifable (case A)";
+      // 
+      // menuItemOptions_Separator
+      // 
+      menuItemOptions_Separator.Name = "menuItemOptions_Separator";
+      menuItemOptions_Separator.Size = new System.Drawing.Size(287, 6);
+      // 
+      // menuItemOptions_AbortableB
+      // 
+      this.menuItemOptions_AbortableB.Checked = true;
+      this.menuItemOptions_AbortableB.CheckOnClick = true;
+      this.menuItemOptions_AbortableB.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.menuItemOptions_AbortableB.Name = "menuItemOptions_AbortableB";
+      this.menuItemOptions_AbortableB.Size = new System.Drawing.Size(290, 22);
+      this.menuItemOptions_AbortableB.Text = "Background operation abortable (case B)";
+      // 
+      // menuItemOptions_NotifableB
+      // 
+      this.menuItemOptions_NotifableB.CheckOnClick = true;
+      this.menuItemOptions_NotifableB.Name = "menuItemOptions_NotifableB";
+      this.menuItemOptions_NotifableB.Size = new System.Drawing.Size(290, 22);
+      this.menuItemOptions_NotifableB.Text = "Background operation notifable (case B)";
+      // 
       // toolStripContainer
       // 
       // 
@@ -147,30 +204,29 @@
       // 
       this.statusStrip.Dock = System.Windows.Forms.DockStyle.None;
       this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusStripLabelResult,
+            this.statusStripLabelProgress,
             this.statusStripProgressBar});
       this.statusStrip.Location = new System.Drawing.Point(0, 0);
       this.statusStrip.Name = "statusStrip";
       this.statusStrip.Size = new System.Drawing.Size(449, 22);
       this.statusStrip.TabIndex = 0;
       // 
-      // statusStripLabelResult
+      // statusStripLabelProgress
       // 
-      this.statusStripLabelResult.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-      this.statusStripLabelResult.Name = "statusStripLabelResult";
-      this.statusStripLabelResult.Size = new System.Drawing.Size(332, 19);
-      this.statusStripLabelResult.Spring = true;
-      this.statusStripLabelResult.Text = "Operation status";
-      this.statusStripLabelResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.statusStripLabelResult.Visible = false;
+      this.statusStripLabelProgress.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+      this.statusStripLabelProgress.Name = "statusStripLabelProgress";
+      this.statusStripLabelProgress.Size = new System.Drawing.Size(332, 17);
+      this.statusStripLabelProgress.Spring = true;
+      this.statusStripLabelProgress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.statusStripLabelProgress.Visible = false;
       // 
       // statusStripProgressBar
       // 
       this.statusStripProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
       this.statusStripProgressBar.AutoSize = false;
-      this.statusStripProgressBar.MarqueeAnimationSpeed = 1;
+      this.statusStripProgressBar.MarqueeAnimationSpeed = 50;
       this.statusStripProgressBar.Name = "statusStripProgressBar";
-      this.statusStripProgressBar.Size = new System.Drawing.Size(100, 18);
+      this.statusStripProgressBar.Size = new System.Drawing.Size(100, 16);
       this.statusStripProgressBar.Visible = false;
       // 
       // listView
@@ -179,6 +235,7 @@
             this.columnHeaderOperationStatus,
             columnHeaderOperationResult});
       this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.listView.FullRowSelect = true;
       this.listView.Location = new System.Drawing.Point(0, 0);
       this.listView.Name = "listView";
       this.listView.Size = new System.Drawing.Size(449, 191);
@@ -196,7 +253,8 @@
       this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
       this.menuStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
       this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            menuItemFile});
+            menuItemFile,
+            menuItemOptions});
       this.menuStrip.Location = new System.Drawing.Point(0, 0);
       this.menuStrip.Name = "menuStrip";
       this.menuStrip.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -208,11 +266,10 @@
       // 
       this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
       this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonFile_StartA,
+            toolStripButtonFile_StartA,
             toolStripButtonFile_StartB,
             this.toolStripProgressBar,
-            this.toolStripProgressLabel,
-            this.toolStripButtonCancel});
+            this.toolStripLabelProgress});
       this.toolStrip.Location = new System.Drawing.Point(0, 24);
       this.toolStrip.Name = "toolStrip";
       this.toolStrip.Size = new System.Drawing.Size(449, 25);
@@ -221,52 +278,30 @@
       // 
       // toolStripButtonFile_StartA
       // 
-      this.toolStripButtonFile_StartA.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripButtonFile_StartA.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFile_StartA.Image")));
-      this.toolStripButtonFile_StartA.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButtonFile_StartA.Name = "toolStripButtonFile_StartA";
-      this.toolStripButtonFile_StartA.Size = new System.Drawing.Size(23, 22);
-      this.toolStripButtonFile_StartA.Text = "Start background operation (case A)";
-      this.toolStripButtonFile_StartA.Click += new System.EventHandler(this.StartLongOperationCaseA);
+      toolStripButtonFile_StartA.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      toolStripButtonFile_StartA.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFile_StartA.Image")));
+      toolStripButtonFile_StartA.ImageTransparentColor = System.Drawing.Color.Magenta;
+      toolStripButtonFile_StartA.Name = "toolStripButtonFile_StartA";
+      toolStripButtonFile_StartA.Size = new System.Drawing.Size(23, 22);
+      toolStripButtonFile_StartA.Text = "Start background operation (case A)";
+      toolStripButtonFile_StartA.Click += new System.EventHandler(this.StartLongOperationCaseA);
       // 
       // toolStripProgressBar
       // 
       this.toolStripProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
       this.toolStripProgressBar.AutoSize = false;
-      this.toolStripProgressBar.MarqueeAnimationSpeed = 1;
+      this.toolStripProgressBar.MarqueeAnimationSpeed = 50;
       this.toolStripProgressBar.Name = "toolStripProgressBar";
       this.toolStripProgressBar.Size = new System.Drawing.Size(100, 16);
       this.toolStripProgressBar.Visible = false;
       // 
-      // toolStripProgressLabel
+      // toolStripLabelProgress
       // 
-      this.toolStripProgressLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-      this.toolStripProgressLabel.Name = "toolStripProgressLabel";
-      this.toolStripProgressLabel.Size = new System.Drawing.Size(94, 22);
-      this.toolStripProgressLabel.Text = "Operation status";
-      this.toolStripProgressLabel.Visible = false;
-      // 
-      // toolStripButtonCancel
-      // 
-      this.toolStripButtonCancel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-      this.toolStripButtonCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.toolStripButtonCancel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCancel.Image")));
-      this.toolStripButtonCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButtonCancel.Name = "toolStripButtonCancel";
-      this.toolStripButtonCancel.Size = new System.Drawing.Size(23, 22);
-      this.toolStripButtonCancel.Text = "Cancel background operation";
-      this.toolStripButtonCancel.Visible = false;
-      // 
-      // toolStripMenuItem3
-      // 
-      this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-      this.toolStripMenuItem3.Size = new System.Drawing.Size(116, 22);
-      // 
-      // toolStripMenuItem2
-      // 
-      this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-      this.toolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
-      this.toolStripMenuItem2.Text = "121212";
+      this.toolStripLabelProgress.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+      this.toolStripLabelProgress.AutoSize = false;
+      this.toolStripLabelProgress.Name = "toolStripLabelProgress";
+      this.toolStripLabelProgress.Size = new System.Drawing.Size(200, 22);
+      this.toolStripLabelProgress.Visible = false;
       // 
       // FormMain
       // 
@@ -274,7 +309,9 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(449, 262);
       this.Controls.Add(this.toolStripContainer);
+      this.KeyPreview = true;
       this.MainMenuStrip = this.menuStrip;
+      this.MinimumSize = new System.Drawing.Size(465, 300);
       this.Name = "FormMain";
       this.Text = "Embedded sample";
       this.toolStripContainer.BottomToolStripPanel.ResumeLayout(false);
@@ -300,18 +337,18 @@
     private System.Windows.Forms.StatusStrip statusStrip;
     private System.Windows.Forms.MenuStrip menuStrip;
     private System.Windows.Forms.ToolStrip toolStrip;
-    private System.Windows.Forms.ToolStripStatusLabel statusStripLabelResult;
+    private System.Windows.Forms.ToolStripStatusLabel statusStripLabelProgress;
     private System.Windows.Forms.ToolStripProgressBar statusStripProgressBar;
-    private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-    private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
-    private System.Windows.Forms.ToolStripButton toolStripButtonCancel;
     private System.Windows.Forms.ToolStripSeparator menuItemFile_Separator;
-    private System.Windows.Forms.ToolStripButton toolStripButtonFile_StartA;
-    private System.Windows.Forms.ToolStripLabel toolStripProgressLabel;
+    private System.Windows.Forms.ToolStripLabel toolStripLabelProgress;
     private System.Windows.Forms.ListView listView;
     private System.Windows.Forms.ColumnHeader columnHeaderOperationStatus;
     private System.Windows.Forms.ToolStripMenuItem menuItemFile_StartB;
+    private System.Windows.Forms.ToolStripMenuItem menuItemOptions_AbortableA;
+    private System.Windows.Forms.ToolStripMenuItem menuItemOptions_AbortableB;
+    private System.Windows.Forms.ToolStripMenuItem menuItemOptions_NotifableA;
+    private System.Windows.Forms.ToolStripMenuItem menuItemOptions_NotifableB;
   }
 }
 

@@ -15,31 +15,41 @@ namespace BackgroundOperationEmbedded
 
     private void StartLongOperationCaseA(object sender, EventArgs e)
     {
-      SwitchMenuStrips(false);
-      toolStripProgressBar.Visible = toolStripProgressLabel.Visible = true;
+      bool abortable = menuItemOptions_AbortableA.Checked;
+      bool notifable = menuItemOptions_NotifableA.Checked;
 
-      var args = DoWorkEmbeddedHelper.Show(LongOperation, "Hello, world!", true, true, toolStripProgressBar.ProgressBar, toolStripProgressLabel);
+      SwitchMenuStrips(false);
+      toolStripProgressBar.Visible = toolStripLabelProgress.Visible = true;
+      toolStripProgressBar.Style = (notifable) ? ProgressBarStyle.Blocks : ProgressBarStyle.Marquee;
+
+      var args = DoWorkEmbeddedHelper.Show(LongOperation, "Hello, world!",
+        notifable, abortable, toolStripProgressBar.ProgressBar, toolStripLabelProgress);
 
       ListViewItem item = new ListViewItem(args.Cancelled ? "Cancelled" : "Finished");
       item.SubItems.Add(args.Cancelled ? string.Empty : (string)args.Result);
       listView.Items.Add(item);
 
-      toolStripProgressBar.Visible = toolStripProgressLabel.Visible = false;
+      toolStripProgressBar.Visible = toolStripLabelProgress.Visible = false;
       SwitchMenuStrips(true);
     }
 
     private void StartLongOperationCaseB(object sender, EventArgs e)
     {
-      SwitchMenuStrips(false);
-      statusStripProgressBar.Visible = statusStripLabelResult.Visible = true;
+      bool abortable = menuItemOptions_AbortableB.Checked;
+      bool notifable = menuItemOptions_NotifableB.Checked;
 
-      var args = DoWorkEmbeddedHelper.Show(LongOperation, "Hello, world!", true, true, statusStripProgressBar.ProgressBar, statusStripLabelResult);
+      SwitchMenuStrips(false);
+      statusStripProgressBar.Visible = statusStripLabelProgress.Visible = true;
+      statusStripProgressBar.Style = (notifable) ? ProgressBarStyle.Blocks : ProgressBarStyle.Marquee;
+
+      var args = DoWorkEmbeddedHelper.Show(LongOperation,"Hello, world!",
+        notifable, abortable, statusStripProgressBar.ProgressBar, statusStripLabelProgress);
       
       ListViewItem item = new ListViewItem(args.Cancelled ? "Cancelled" : "Finished");
       item.SubItems.Add(args.Cancelled ? string.Empty : (string)args.Result);
       listView.Items.Add(item);
 
-      statusStripProgressBar.Visible = statusStripLabelResult.Visible = false;
+      statusStripProgressBar.Visible = statusStripLabelProgress.Visible = false;
       SwitchMenuStrips(true);
     }
 

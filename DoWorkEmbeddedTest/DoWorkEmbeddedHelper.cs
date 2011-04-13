@@ -17,12 +17,13 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
   class DoWorkEmbeddedHelper
   {
     public static RunWorkerCompletedEventArgs Show(
-      DoWorkEventHandler work, object argument, bool notifable, bool cancellable, ProgressBar progressbar, ToolStripLabel statuslabel)
+      DoWorkEventHandler work, object argument, bool notifable,
+      bool abortable, ProgressBar progressbar, ToolStripLabel statuslabel)
     {
       var result = (RunWorkerCompletedEventArgs)null;
       var worker = new BackgroundWorker();
       worker.WorkerReportsProgress = notifable;
-      worker.WorkerSupportsCancellation = cancellable;
+      worker.WorkerSupportsCancellation = abortable;
       worker.DoWork += work;
 
       // background operation completed event handler
@@ -34,11 +35,11 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
       // background operation progress report event handler
       if (worker.WorkerReportsProgress)
       {
-        progressbar.Style = ProgressBarStyle.Blocks;
         worker.ProgressChanged += (ss, ee) =>
         {
           progressbar.Value = ee.ProgressPercentage;
-          statuslabel.Text = (ee.UserState as string) ?? statuslabel.Text;
+          if (statuslabel != null)
+            statuslabel.Text = (ee.UserState as string) ?? statuslabel.Text;
         };
       }
 
@@ -54,9 +55,11 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
             worker.CancelAsync();
       };
 
-      progressbar.FindForm().FormClosing += formclosing;
-      progressbar.FindForm().ActiveControl.KeyDown += formkeydown;
-
+      var form = progressbar.FindForm();
+      form.KeyPreview = true;
+      form.FormClosing += formclosing;
+      form.KeyDown += formkeydown;
+      
       worker.RunWorkerAsync(argument);
 
       while (worker.IsBusy)
@@ -65,8 +68,8 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
         Thread.Sleep(10);
       }
 
-      progressbar.FindForm().ActiveControl.KeyDown -= formkeydown;
-      progressbar.FindForm().FormClosing -= formclosing;
+      form.KeyDown -= formkeydown;
+      form.FormClosing -= formclosing;
       return result;
     }
   }
