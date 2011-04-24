@@ -2,8 +2,10 @@
  * (С) Skatech Research Lab, 2000-2011
  * Last change: 2011.04.09
  *
- * DoWorkSimpleDialog - Windows.Forms simple version of background operation management dialog
+ * SimpleDialogWF - Windows.Forms simple version of background operation management dialog
+ * Delay - Background thread delay helper
  *****************************************************************************/
+
 using System;
 using System.ComponentModel;
 using System.Threading;
@@ -17,16 +19,16 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
   public partial class DoWorkSimpleDialog : Form
   {
     // background operation argument
-    public object m_workarg;
+    private object m_workarg;
 
     // automatically close dialog on background operation completing
-    public bool m_autoclose;
+    private bool m_autoclose;
     
     // aborted state of background operation
-    public bool m_isaborted;
+    private bool m_isaborted;
     
     // background worker object
-    public BackgroundWorker m_worker;
+    private BackgroundWorker m_worker;
 
     /// <summary>
     /// Background operation completed event arguments

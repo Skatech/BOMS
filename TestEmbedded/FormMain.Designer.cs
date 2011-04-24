@@ -37,6 +37,9 @@
       System.Windows.Forms.ToolStripMenuItem menuItemOptions;
       System.Windows.Forms.ToolStripSeparator menuItemOptions_Separator;
       System.Windows.Forms.ToolStripButton toolStripButtonFile_StartA;
+      System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Running", System.Windows.Forms.HorizontalAlignment.Left);
+      System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Finished", System.Windows.Forms.HorizontalAlignment.Left);
+      System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Canceled", System.Windows.Forms.HorizontalAlignment.Left);
       this.menuItemFile_StartB = new System.Windows.Forms.ToolStripMenuItem();
       this.menuItemFile_Separator = new System.Windows.Forms.ToolStripSeparator();
       this.menuItemOptions_AbortableA = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,9 +48,11 @@
       this.menuItemOptions_NotifableB = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
       this.statusStrip = new System.Windows.Forms.StatusStrip();
+      this.statusStripLabelHelp = new System.Windows.Forms.ToolStripStatusLabel();
       this.statusStripLabelProgress = new System.Windows.Forms.ToolStripStatusLabel();
       this.statusStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
       this.listView = new System.Windows.Forms.ListView();
+      this.columnHeaderOperationName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.columnHeaderOperationStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.menuStrip = new System.Windows.Forms.MenuStrip();
       this.toolStrip = new System.Windows.Forms.ToolStrip();
@@ -108,7 +113,7 @@
       menuItemFile_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
       menuItemFile_Exit.Size = new System.Drawing.Size(304, 22);
       menuItemFile_Exit.Text = "Exit";
-      menuItemFile_Exit.Click += new System.EventHandler(this.menuItemFile_Exit_Click);
+      menuItemFile_Exit.Click += new System.EventHandler(this.OnExit);
       // 
       // toolStripButtonFile_StartB
       // 
@@ -123,7 +128,7 @@
       // columnHeaderOperationResult
       // 
       columnHeaderOperationResult.Text = "Operation result";
-      columnHeaderOperationResult.Width = 300;
+      columnHeaderOperationResult.Width = 250;
       // 
       // menuItemOptions
       // 
@@ -139,7 +144,7 @@
       // 
       // menuItemOptions_AbortableA
       // 
-      this.menuItemOptions_AbortableA.Checked = true;
+      this.menuItemOptions_AbortableA.Checked = global::Skatech.Tests.TestEmbedded.Properties.Settings.Default.OperationA_Abortable;
       this.menuItemOptions_AbortableA.CheckOnClick = true;
       this.menuItemOptions_AbortableA.CheckState = System.Windows.Forms.CheckState.Checked;
       this.menuItemOptions_AbortableA.Name = "menuItemOptions_AbortableA";
@@ -148,7 +153,7 @@
       // 
       // menuItemOptions_NotifableA
       // 
-      this.menuItemOptions_NotifableA.Checked = true;
+      this.menuItemOptions_NotifableA.Checked = global::Skatech.Tests.TestEmbedded.Properties.Settings.Default.OperationA_Notifable;
       this.menuItemOptions_NotifableA.CheckOnClick = true;
       this.menuItemOptions_NotifableA.CheckState = System.Windows.Forms.CheckState.Checked;
       this.menuItemOptions_NotifableA.Name = "menuItemOptions_NotifableA";
@@ -162,7 +167,7 @@
       // 
       // menuItemOptions_AbortableB
       // 
-      this.menuItemOptions_AbortableB.Checked = true;
+      this.menuItemOptions_AbortableB.Checked = global::Skatech.Tests.TestEmbedded.Properties.Settings.Default.OperationB_Abortable;
       this.menuItemOptions_AbortableB.CheckOnClick = true;
       this.menuItemOptions_AbortableB.CheckState = System.Windows.Forms.CheckState.Checked;
       this.menuItemOptions_AbortableB.Name = "menuItemOptions_AbortableB";
@@ -171,6 +176,7 @@
       // 
       // menuItemOptions_NotifableB
       // 
+      this.menuItemOptions_NotifableB.Checked = global::Skatech.Tests.TestEmbedded.Properties.Settings.Default.OperationB_Notifable;
       this.menuItemOptions_NotifableB.CheckOnClick = true;
       this.menuItemOptions_NotifableB.Name = "menuItemOptions_NotifableB";
       this.menuItemOptions_NotifableB.Size = new System.Drawing.Size(290, 22);
@@ -197,11 +203,11 @@
       // 
       this.toolStripContainer.ContentPanel.BackColor = System.Drawing.SystemColors.Window;
       this.toolStripContainer.ContentPanel.Controls.Add(this.listView);
-      this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(449, 191);
+      this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(534, 341);
       this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
       this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
       this.toolStripContainer.Name = "toolStripContainer";
-      this.toolStripContainer.Size = new System.Drawing.Size(449, 262);
+      this.toolStripContainer.Size = new System.Drawing.Size(534, 412);
       this.toolStripContainer.TabIndex = 0;
       this.toolStripContainer.Text = "toolStripContainer1";
       // 
@@ -214,19 +220,27 @@
       // 
       this.statusStrip.Dock = System.Windows.Forms.DockStyle.None;
       this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStripLabelHelp,
             this.statusStripLabelProgress,
             this.statusStripProgressBar});
       this.statusStrip.Location = new System.Drawing.Point(0, 0);
       this.statusStrip.Name = "statusStrip";
-      this.statusStrip.Size = new System.Drawing.Size(449, 22);
+      this.statusStrip.Size = new System.Drawing.Size(534, 22);
       this.statusStrip.TabIndex = 0;
+      // 
+      // statusStripLabelHelp
+      // 
+      this.statusStripLabelHelp.Name = "statusStripLabelHelp";
+      this.statusStripLabelHelp.Size = new System.Drawing.Size(178, 17);
+      this.statusStripLabelHelp.Text = "Press Escape to cancel operation";
+      this.statusStripLabelHelp.Visible = false;
       // 
       // statusStripLabelProgress
       // 
-      this.statusStripLabelProgress.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
       this.statusStripLabelProgress.Name = "statusStripLabelProgress";
-      this.statusStripLabelProgress.Size = new System.Drawing.Size(332, 17);
+      this.statusStripLabelProgress.Size = new System.Drawing.Size(417, 17);
       this.statusStripLabelProgress.Spring = true;
+      this.statusStripLabelProgress.Text = "Operation status";
       this.statusStripLabelProgress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.statusStripLabelProgress.Visible = false;
       // 
@@ -241,22 +255,40 @@
       // 
       // listView
       // 
+      this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderOperationName,
             this.columnHeaderOperationStatus,
             columnHeaderOperationResult});
       this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
       this.listView.FullRowSelect = true;
+      listViewGroup1.Header = "Running";
+      listViewGroup1.Name = "groupRunning";
+      listViewGroup2.Header = "Finished";
+      listViewGroup2.Name = "groupFinished";
+      listViewGroup3.Header = "Canceled";
+      listViewGroup3.Name = "groupCanceled";
+      this.listView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3});
       this.listView.Location = new System.Drawing.Point(0, 0);
       this.listView.Name = "listView";
-      this.listView.Size = new System.Drawing.Size(449, 191);
+      this.listView.ShowItemToolTips = true;
+      this.listView.Size = new System.Drawing.Size(534, 341);
       this.listView.TabIndex = 0;
       this.listView.UseCompatibleStateImageBehavior = false;
       this.listView.View = System.Windows.Forms.View.Details;
       // 
+      // columnHeaderOperationName
+      // 
+      this.columnHeaderOperationName.Text = "Name";
+      this.columnHeaderOperationName.Width = 150;
+      // 
       // columnHeaderOperationStatus
       // 
-      this.columnHeaderOperationStatus.Text = "Operation status";
-      this.columnHeaderOperationStatus.Width = 120;
+      this.columnHeaderOperationStatus.Text = "Status";
+      this.columnHeaderOperationStatus.Width = 100;
       // 
       // menuStrip
       // 
@@ -268,7 +300,7 @@
       this.menuStrip.Location = new System.Drawing.Point(0, 0);
       this.menuStrip.Name = "menuStrip";
       this.menuStrip.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-      this.menuStrip.Size = new System.Drawing.Size(449, 24);
+      this.menuStrip.Size = new System.Drawing.Size(534, 24);
       this.menuStrip.TabIndex = 0;
       this.menuStrip.Text = "menuStrip1";
       // 
@@ -282,7 +314,7 @@
             this.toolStripLabelProgress});
       this.toolStrip.Location = new System.Drawing.Point(0, 24);
       this.toolStrip.Name = "toolStrip";
-      this.toolStrip.Size = new System.Drawing.Size(449, 25);
+      this.toolStrip.Size = new System.Drawing.Size(534, 25);
       this.toolStrip.Stretch = true;
       this.toolStrip.TabIndex = 1;
       // 
@@ -308,13 +340,14 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(449, 262);
+      this.ClientSize = new System.Drawing.Size(534, 412);
       this.Controls.Add(this.toolStripContainer);
       this.KeyPreview = true;
       this.MainMenuStrip = this.menuStrip;
-      this.MinimumSize = new System.Drawing.Size(465, 300);
+      this.MinimumSize = new System.Drawing.Size(550, 450);
       this.Name = "FormMain";
-      this.Text = "Embedded sample";
+      this.Text = "Test embedded operation control helper";
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OnFormClosed);
       this.toolStripContainer.BottomToolStripPanel.ResumeLayout(false);
       this.toolStripContainer.BottomToolStripPanel.PerformLayout();
       this.toolStripContainer.ContentPanel.ResumeLayout(false);
@@ -350,6 +383,8 @@
     private System.Windows.Forms.ToolStripMenuItem menuItemOptions_AbortableB;
     private System.Windows.Forms.ToolStripMenuItem menuItemOptions_NotifableA;
     private System.Windows.Forms.ToolStripMenuItem menuItemOptions_NotifableB;
+    private System.Windows.Forms.ToolStripStatusLabel statusStripLabelHelp;
+    private System.Windows.Forms.ColumnHeader columnHeaderOperationName;
   }
 }
 

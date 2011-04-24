@@ -9,6 +9,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Threading;
+using System.Drawing;
 using Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement;
 
 namespace Skatech.Tests.TestEmbedded
@@ -30,20 +31,30 @@ namespace Skatech.Tests.TestEmbedded
 
       // prepare main form controls
       toolStrip.Enabled = menuStrip.Enabled = false;
+      statusStripLabelHelp.Visible = true;
       toolStripProgressBar.Visible = toolStripLabelProgress.Visible = true;
       toolStripProgressBar.Style = (notifable) ? ProgressBarStyle.Blocks : ProgressBarStyle.Marquee;
+
+      // add opertion result to listview
+      var item = new ListViewItem("Operation A");
+      item.Group = listView.Groups["groupRunning"];
+      item.ForeColor = Color.Blue;
+      item.SubItems.Add("Running");
+      listView.Items.Add(item);
 
       // run operation in background mode
       var args = DoWorkEmbeddedHelper.Show(LongOperation, "Hello, world!",
         notifable, abortable, this, toolStripProgressBar.ProgressBar, toolStripLabelProgress);
 
-      // add opertion result to listview
-      var item = new ListViewItem(args.Cancelled ? "Cancelled" : "Finished");
-      item.SubItems.Add(args.Cancelled ? string.Empty : (string)args.Result);
-      listView.Items.Add(item);
+      // update opertion result
+      item.Group = listView.Groups[(args.Cancelled) ? "groupCanceled" : "groupFinished"];
+      item.ForeColor = (args.Cancelled) ? Color.Red : Color.Green;
+      item.SubItems[1].Text = (args.Cancelled) ? "Cancelled" : "Finished";
+      item.SubItems.Add((args.Cancelled) ? string.Empty : (string)args.Result);
 
       // restore controls state
       toolStripProgressBar.Visible = toolStripLabelProgress.Visible = false;
+      statusStripLabelHelp.Visible = false;
       toolStrip.Enabled = menuStrip.Enabled = true;
     }
 
@@ -56,20 +67,30 @@ namespace Skatech.Tests.TestEmbedded
 
       // prepare main form controls
       toolStrip.Enabled = menuStrip.Enabled = false;
+      statusStripLabelHelp.Visible = true;
       statusStripProgressBar.Visible = statusStripLabelProgress.Visible = true;
       statusStripProgressBar.Style = (notifable) ? ProgressBarStyle.Blocks : ProgressBarStyle.Marquee;
+
+      // add opertion result to listview
+      var item = new ListViewItem("Operation B");
+      item.Group = listView.Groups["groupRunning"];
+      item.ForeColor = Color.Blue;
+      item.SubItems.Add("Running");      
+      listView.Items.Add(item);
 
       // run operation in background mode
       var args = DoWorkEmbeddedHelper.Show(LongOperation,"Hello, world!",
         notifable, abortable, this, statusStripProgressBar.ProgressBar, statusStripLabelProgress);
 
-      // add opertion result to listview
-      var item = new ListViewItem(args.Cancelled ? "Cancelled" : "Finished");
-      item.SubItems.Add(args.Cancelled ? string.Empty : (string)args.Result);
-      listView.Items.Add(item);
+      // update opertion result
+      item.Group = listView.Groups[(args.Cancelled) ? "groupCanceled" : "groupFinished"];
+      item.ForeColor = (args.Cancelled) ? Color.Red : Color.Green;
+      item.SubItems[1].Text = (args.Cancelled) ? "Cancelled" : "Finished";
+      item.SubItems.Add((args.Cancelled) ? string.Empty : (string)args.Result);
 
       // restore controls state
       statusStripProgressBar.Visible = statusStripLabelProgress.Visible = false;
+      statusStripLabelHelp.Visible = false;
       toolStrip.Enabled = menuStrip.Enabled = true;
     }
 
@@ -123,9 +144,21 @@ namespace Skatech.Tests.TestEmbedded
       args.Result = result;
     }
 
-    private void menuItemFile_Exit_Click(object sender, EventArgs e)
+    // process menu close command
+    private void OnExit(object sender, EventArgs e)
     {
       Close();
+    }
+
+    // save settings after form closed event
+    private void OnFormClosed(object sender, FormClosedEventArgs e)
+    {
+      var settings = Properties.Settings.Default;
+      settings.OperationA_Abortable = menuItemOptions_AbortableA.Checked;
+      settings.OperationA_Notifable = menuItemOptions_NotifableA.Checked;
+      settings.OperationB_Abortable = menuItemOptions_AbortableB.Checked;
+      settings.OperationB_Notifable = menuItemOptions_NotifableB.Checked;
+      settings.Save();
     }
   }
 }

@@ -1,4 +1,4 @@
-BOMS - Background Operation Managing Samples v1.0
+BOMS - Background Operation Managing Samples v1.0.1
 
 This solution demonstrates handling of background operations using
 helper-primitives based on FCL BackgroundWorker class.

@@ -22,5 +22,53 @@ namespace Skatech.Tests.TestEmbedded.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OperationA_Abortable {
+            get {
+                return ((bool)(this["OperationA_Abortable"]));
+            }
+            set {
+                this["OperationA_Abortable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OperationA_Notifable {
+            get {
+                return ((bool)(this["OperationA_Notifable"]));
+            }
+            set {
+                this["OperationA_Notifable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OperationB_Abortable {
+            get {
+                return ((bool)(this["OperationB_Abortable"]));
+            }
+            set {
+                this["OperationB_Abortable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OperationB_Notifable {
+            get {
+                return ((bool)(this["OperationB_Notifable"]));
+            }
+            set {
+                this["OperationB_Notifable"] = value;
+            }
+        }
     }
 }
