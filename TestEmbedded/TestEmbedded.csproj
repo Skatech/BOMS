@@ -8,8 +8,8 @@
     <ProjectGuid>{6C971A2B-2F8D-463F-B2A1-042053B87A47}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DoWorkEmbeddedTest</RootNamespace>
-    <AssemblyName>DoWorkEmbeddedTest</AssemblyName>
+    <RootNamespace>Skatech.Tests.TestEmbedded</RootNamespace>
+    <AssemblyName>TestEmbedded</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,14 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DoWorkEmbeddedHelper.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +68,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BOM\BOM.csproj">
+      <Project>{73B13FF4-6587-4A90-ADDF-5A4426CFFCBA}</Project>
+      <Name>BOM</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

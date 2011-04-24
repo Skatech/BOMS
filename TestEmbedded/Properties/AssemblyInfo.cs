@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DoWorkEmbeddedTest")]
-[assembly: AssemblyDescription("Background operation handling with embedded controls")]
+[assembly: AssemblyTitle("TestEmbedded")]
+[assembly: AssemblyDescription("Sample of background operation handling with  with controls embedded in form (Windows.Forms version)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Skatech research Lab")]
-[assembly: AssemblyProduct("DoWorkEmbeddedTest")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCompany("Skatech")]
+[assembly: AssemblyProduct("TestEmbedded")]
+[assembly: AssemblyCopyright("Copyright © Skatech Research Lab 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

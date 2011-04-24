@@ -1,4 +1,4 @@
-﻿namespace BackgroundOperationEmbedded
+﻿namespace Skatech.Tests.TestEmbedded
 {
   partial class FormMain
   {
@@ -176,6 +176,16 @@
       this.menuItemOptions_NotifableB.Size = new System.Drawing.Size(290, 22);
       this.menuItemOptions_NotifableB.Text = "Background operation notifable (case B)";
       // 
+      // toolStripButtonFile_StartA
+      // 
+      toolStripButtonFile_StartA.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      toolStripButtonFile_StartA.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFile_StartA.Image")));
+      toolStripButtonFile_StartA.ImageTransparentColor = System.Drawing.Color.Magenta;
+      toolStripButtonFile_StartA.Name = "toolStripButtonFile_StartA";
+      toolStripButtonFile_StartA.Size = new System.Drawing.Size(23, 22);
+      toolStripButtonFile_StartA.Text = "Start background operation (case A)";
+      toolStripButtonFile_StartA.Click += new System.EventHandler(this.StartLongOperationCaseA);
+      // 
       // toolStripContainer
       // 
       // 
@@ -276,16 +286,6 @@
       this.toolStrip.Stretch = true;
       this.toolStrip.TabIndex = 1;
       // 
-      // toolStripButtonFile_StartA
-      // 
-      toolStripButtonFile_StartA.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      toolStripButtonFile_StartA.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFile_StartA.Image")));
-      toolStripButtonFile_StartA.ImageTransparentColor = System.Drawing.Color.Magenta;
-      toolStripButtonFile_StartA.Name = "toolStripButtonFile_StartA";
-      toolStripButtonFile_StartA.Size = new System.Drawing.Size(23, 22);
-      toolStripButtonFile_StartA.Text = "Start background operation (case A)";
-      toolStripButtonFile_StartA.Click += new System.EventHandler(this.StartLongOperationCaseA);
-      // 
       // toolStripProgressBar
       // 
       this.toolStripProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -301,6 +301,7 @@
       this.toolStripLabelProgress.AutoSize = false;
       this.toolStripLabelProgress.Name = "toolStripLabelProgress";
       this.toolStripLabelProgress.Size = new System.Drawing.Size(200, 22);
+      this.toolStripLabelProgress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.toolStripLabelProgress.Visible = false;
       // 
       // FormMain

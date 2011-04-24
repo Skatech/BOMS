@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace BackgroundOperationsManagingSamples
+namespace Skatech.Tests.TestDialog
 {
   static class Program
   {

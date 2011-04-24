@@ -2,10 +2,8 @@
  * (С) Skatech Research Lab, 2000-2011
  * Last change: 2011.04.09
  *
- * SimpleDialogWF - Windows.Forms simple version of background operation management dialog
- * Delay - Background thread delay helper
+ * DoWorkSimpleDialog - Windows.Forms simple version of background operation management dialog
  *****************************************************************************/
-
 using System;
 using System.ComponentModel;
 using System.Threading;
@@ -16,7 +14,7 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
   /// <summary>
   /// Windows.Forms simple version of background operation management dialog
   /// </summary>
-  public partial class SimpleDialog : Form
+  public partial class DoWorkSimpleDialog : Form
   {
     // background operation argument
     public object m_workarg;
@@ -38,7 +36,7 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
     /// <summary>
     /// Constructor
     /// </summary>
-    public SimpleDialog(
+    public DoWorkSimpleDialog(
       string caption, string title, bool autoclose, BackgroundWorker worker,
       object argument)
     {
@@ -135,39 +133,9 @@ namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
       string caption, string title, bool autoclose,
       BackgroundWorker worker, object argument)
     {
-      var dialog = new SimpleDialog(caption, title, autoclose, worker, argument);
+      var dialog = new DoWorkSimpleDialog(caption, title, autoclose, worker, argument);
       dialog.ShowDialog();
       return dialog.CompletedEventArgs;
-    }
-  }
-
-  /// <summary>
-  /// Thread delay helper
-  /// </summary>
-  public sealed class Delay
-  {
-    /// <summary>
-    /// Origin of the delay period
-    /// </summary>
-    private DateTime Origin { get; set; }
-
-    /// <summary>
-    /// Method return control when specified period from the origin passed
-    /// </summary>
-    public void WaitRest(int days, int hours, int minutes, int seconds, int milliseconds)
-    {
-      TimeSpan term = new TimeSpan(days, hours, minutes, seconds, milliseconds);
-      TimeSpan rest = term - (DateTime.Now - Origin);
-      if (rest.TotalMilliseconds > 0)
-        Thread.Sleep(rest);
-    }
-
-    /// <summary>
-    /// Return new delay with origin initialized from current moment
-    /// </summary>
-    public static Delay FromNow()
-    {
-      return new Delay() { Origin = DateTime.Now };
     }
   }
 }

@@ -1,0 +1,13 @@
+BOMS - Background Operation Managing Samples v1.0
+
+This solution demonstrated handling of background operations using
+helper-primitives based on FCL BackgroundWorker class.
+
+Projects in solution:
+---------------------
+- BOM.dll		- background operations management helpers class library with helper-primitives:
+	- DoWorkEmbeddedHelper	- helper-primitive that using controls embedded in main window (Windows.Forms)
+	- DoWorkSimpleDialog	- helper-primitive that using simple modal dialog (Windows.Forms)
+	- Delay					- origin relative delay helper with background operation cancelled state check
+- TestEmbedded	- test application for DoWorkEmbeddedHelper primitive.
+- TestDialog	- test application for DoWorkSimpleDialog primitive.

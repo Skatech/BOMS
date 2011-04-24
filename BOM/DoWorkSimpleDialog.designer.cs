@@ -1,6 +1,6 @@
 ﻿namespace Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement
 {
-  partial class SimpleDialog
+  partial class DoWorkSimpleDialog
   {
     /// <summary>
     /// Required designer variable.

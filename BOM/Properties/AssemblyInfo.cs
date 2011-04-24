@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SimpleDialogWF")]
-[assembly: AssemblyDescription("Background Operation Managing Sample - SimpleDialog (Windows.Forms)")]
+[assembly: AssemblyTitle("BOM")]
+[assembly: AssemblyDescription("Background operations management helper class library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Skatech")]
-[assembly: AssemblyProduct("SimpleDialogWF")]
-[assembly: AssemblyCopyright("Copyright © Skatech Research Lab")]
+[assembly: AssemblyCompany("Skatech Research Lab.")]
+[assembly: AssemblyProduct("BOM")]
+[assembly: AssemblyCopyright("Copyright © Skatech Research Lab. 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("00cbedfa-a3dc-456d-8f00-22a12384d69b")]
+[assembly: Guid("276b24b3-df58-4cfb-9e31-5e018c3e2248")]
 
 // Version information for an assembly consists of the following four values:
 //

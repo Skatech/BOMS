@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DoWorkEmbeddedTest.Properties {
+namespace Skatech.Tests.TestEmbedded.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

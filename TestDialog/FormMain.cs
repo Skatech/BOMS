@@ -12,7 +12,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Skatech.Auxiliary.Dialogs.BackgroundOperationsManagement;
 
-namespace BackgroundOperationsManagingSamples
+namespace Skatech.Tests.TestDialog
 {
   public partial class FormMain : Form
   {
@@ -93,7 +93,7 @@ namespace BackgroundOperationsManagingSamples
       object userarg = textArgumentText.Text;
 
       // this call initialize background worker and operation status dialog then start operation
-      RunWorkerCompletedEventArgs operation = SimpleDialog.Show(
+      RunWorkerCompletedEventArgs operation = DoWorkSimpleDialog.Show(
         "Please be patient", "Processing reports...",
         autoclose, work, userarg, notifable, cancellable);
 

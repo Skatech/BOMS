@@ -1,4 +1,4 @@
-﻿namespace BackgroundOperationsManagingSamples
+﻿namespace Skatech.Tests.TestDialog
 {
   partial class FormMain
   {
